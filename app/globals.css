@@ -1,7 +1,87 @@
 @import "tailwindcss";
 
-body {
-  background: #0b0418;
-  color: white;
+:root {
+  /* Brand Colors */
+  --primary: #ffffff;
+  --primary-dark: #000000;
+  --accent: #8b5cf6;
+  --accent-subtle: rgba(139, 92, 246, 0.15);
+
+  /* Backgrounds & Borders */
+  --bg-main: #000000;
+  --bg-card: #0a0a0a;
+  --bg-card-hover: #111111;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.18);
+
+  /* Typography */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+}
+
+@theme {
+  --font-serif: var(--font-manrope), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
+  --color-accent: var(--accent);
+  --color-bg-main: var(--bg-main);
+  --color-bg-card: var(--bg-card);
+}
+
+/* Base Styles */
+html {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  background-color: var(--bg-main);
+  color: #ededed;
+  overflow-x: hidden;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+/* Flat card */
+.flat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.flat-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+}
+
+/* Section divider */
+.section-divider {
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Dot grid pattern background for hero */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Subtle radial glow — barely visible */
+.hero-glow {
+  background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
 }

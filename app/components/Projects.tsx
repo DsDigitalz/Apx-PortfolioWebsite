@@ -1,134 +1,174 @@
 "use client";
 
 import Image from "next/image";
-import {  ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 const projects = [
   {
     id: 1,
-    title: "Portfolio Website",
-    category: "Featured Project",
+    title: "Betternship Web App",
+    category: "UI/UX DESIGN",
     description:
-      "A modern glassmorphism portfolio built with Next.js and Tailwind CSS featuring smooth animations, responsive layouts and reusable components.",
-    image: "/images/project-1.png",
-    tech: ["Next.js", "Tailwind", "TypeScript"],
-    github: "#",
-    live: "#",
+      "Designed contact recruiter pages, showcasing a modern design using Figma",
+    image: "/images/Dashboard2.png",
+    tech: ["Figma", "UI/UX"],
+    github: "",
+    live: "https://www.figma.com/design/zRR9fCYYANK2CAkterULb8/Betternship-recruiter-page?node-id=0-1&m=dev&t=mJtTtYKW3c8y5bN0-1",
   },
   {
     id: 2,
-    title: "Service Marketplace",
-    category: "Latest Project",
+    title: "Healthcare Research Web App",
+    category: "UI/UX DESIGN",
     description:
-      "A full-stack marketplace connecting users with service providers through authentication, bookings, dashboards and payment integration.",
-    image: "/images/project-2.png",
-    tech: ["React", "Supabase", "Tailwind"],
-    github: "#",
-    live: "#",
+      "Designed A comprehensive 5-page, end-to-end Clinical Research Management Suite designed to streamline the lifecycle of medical studies using figma",
+    image: "/images/Dashboard.png",
+    tech: ["Figma", "UI/UX"],
+    github: "",
+    live: "https://www.figma.com/design/K4zgLwzg3BJRt56IwS7LHt/Healthcare-research-web-app?node-id=0-1&m=dev&t=v4pACFqKo5EabAHb-1",
+  },
+  {
+    id: 3,
+    title: "AI FAQ/Lead Capture Bot",
+    category: "FRONT-END WEB DEVELOPMENT",
+    description:
+      "Developed a high-performance, multi-tenant AI SaaS and embeddable chat widget focused on dynamic personalization and fluid user experience using React, TailwindCSS, and Framer Motion.",
+    image: "/images/AI.png",
+    tech: ["React", "TailwindCSS", "Framer Motion"],
+    github: "",
+    live: "https://helplyai.vercel.app/",
+  },
+  {
+    id: 4,
+    title: "Audiophile Ecommerce Website",
+    category: "FRONT-END WEB DEVELOPMENT",
+    description:
+      "Built a fully functional Audiophile e-commerce web app using Next.js and TailwindCSS",
+    image: "/images/audiophile.png",
+    tech: ["Next.js", "TailwindCSS"],
+    github: "",
+    live: "https://audicommerce.netlify.app/",
+  },
+  {
+    id: 5,
+    title: "Ticket Management Web Application",
+    category: "FRONT-END WEB DEVELOPMENT",
+    description:
+      "A full-featured ticket management system built with VueJS and TailwindCSS",
+    image: "/images/ticketrax.png",
+    tech: ["VueJS", "TailwindCSS"],
+    github: "",
+    live: "https://ticketrax-vue.netlify.app/",
+  },
+  {
+    id: 6,
+    title: "ProCleaning Services Landing Page",
+    category: "FRONT-END WEB DEVELOPMENT",
+    description:
+      "Developed a responsive front-end cleaning services website with React.JS and Tailwind",
+    image: "/images/Cover.png",
+    tech: ["React.js", "TailwindCSS"],
+    github: "",
+    live: "https://procleaningservices.netlify.app/",
   },
 ];
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="relative overflow-hidden py-28"
-    >
-      {/* Purple Glow */}
-      <div className="absolute left-1/2 top-32 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-violet-600/20 blur-[170px]" />
-
+    <section id="projects" className="relative lg:py-28 pt-28 section-divider">
       <div className="mx-auto max-w-6xl px-6">
         {/* Heading */}
-        <div className="mb-20 text-center">
-          <span className="rounded-full border border-violet-500/30 bg-white/5 px-5 py-2 text-sm text-violet-300 backdrop-blur-xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="mb-16 text-center"
+        >
+          <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#888]">
             Projects
-          </span>
+          </p>
 
-          <h2 className="mt-6 text-4xl font-bold text-white md:text-5xl">
-            Things I've
-            <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-              {" "}
-              Built
-            </span>
+          <h2 className="text-4xl font-bold text-white md:text-5xl">
+            Things I&apos;ve{" "}
+            <span className="text-[#888]">Built</span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-gray-400">
-            A selection of projects showcasing my frontend and full-stack
-            development skills.
+          <p className="mx-auto mt-6 max-w-2xl text-[#ACACAC] leading-7">
+            A selection of projects showcasing my frontend and UI/UX design skills.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="space-y-28">
-          {projects.map((project, index) => (
-            <div
+        {/* Project Grid */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.08 } },
+          }}
+          className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {projects.map((project) => (
+            <motion.div
               key={project.id}
-              className={`grid items-center gap-14 lg:grid-cols-2 ${
-                index % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
-              }`}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+              }}
+              className="group flat-card flex flex-col rounded-xl overflow-hidden"
             >
               {/* Image */}
-              <div className="relative">
-                <div className="absolute inset-0 rounded-3xl bg-violet-600/30 blur-[70px]" />
-
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl transition duration-500 hover:scale-[1.02]">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={700}
-                    height={500}
-                    className="w-full object-cover"
-                  />
-                </div>
+              <div className="relative h-48 w-full overflow-hidden bg-[#111]">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-[1.04]"
+                />
               </div>
 
               {/* Content */}
-              <div>
-                <p className="mb-2 text-sm text-violet-400">
+              <div className="flex flex-1 flex-col p-5">
+                <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-widest text-[#555]">
                   {project.category}
                 </p>
 
-                <h3 className="mb-5 text-3xl font-bold text-white">
+                <h3 className="mb-2 text-base font-semibold text-white leading-snug">
                   {project.title}
                 </h3>
 
-                <div className="rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl">
-                  <p className="leading-8 text-gray-400">
-                    {project.description}
-                  </p>
-                </div>
+                <p className="mb-4 flex-1 text-sm leading-6 text-[#ACACAC]">
+                  {project.description}
+                </p>
 
-                {/* Tech Stack */}
-                <div className="mt-6 flex flex-wrap gap-3">
-                  {project.tech.map((item) => (
+                {/* Tech Tags */}
+                <div className="mb-4 flex flex-wrap gap-1.5">
+                  {project.tech.map((t) => (
                     <span
-                      key={item}
-                      className="rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300"
+                      key={t}
+                      className="rounded-md border border-white/8 px-2.5 py-1 text-[11px] text-[#ACACAC]"
                     >
-                      {item}
+                      {t}
                     </span>
                   ))}
                 </div>
 
-                {/* Links */}
-                <div className="mt-8 flex items-center gap-5">
-                  <a
-                    href={project.github}
-                    className="rounded-full border border-white/10 bg-white/5 p-3 text-gray-300 transition hover:bg-violet-500 hover:text-white"
-                  >
-                    {/* <Github size={18} /> */}
-                  </a>
-
-                  <a
-                    href={project.live}
-                    className="rounded-full border border-white/10 bg-white/5 p-3 text-gray-300 transition hover:bg-violet-500 hover:text-white"
-                  >
-                    <ExternalLink size={18} />
-                  </a>
-                </div>
+                {/* Live Link */}
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-sm text-white/60 transition hover:text-white"
+                >
+                  <ExternalLink size={14} />
+                  <span>View Project ↗</span>
+                </a>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
